@@ -15,3 +15,6 @@ gulp.task('update-doc', updateDoc);
 
 gulp.task('build-doc', ['clean-doc'], updateDoc);
 
+gulp.task('watch-doc', ['build-doc'], () => {
+  gulp.watch(`${docSpec.src}/**/*`, ['update-doc']);
+});

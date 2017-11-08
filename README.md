@@ -28,7 +28,8 @@ The distribution files are generated in the `/dist` folder.
 
 ### View the App
 To 
-- **build** the app and 
+- **build** the app, 
+- **watch** the source files, and  
 - start a **server**, 
 
 run ...
@@ -37,12 +38,14 @@ $ gulp app
 ```
 Then open **`http://localhost:8000`** in your browser.
 
+(The files will be recompiled on change, but you need to reload the browser manually to see the changes)
+
 ### Watch the App
 To 
 - **build** the app,
 - **watch** the source files,  
 - start a **server**, and
-- **livereload** the browser on-change of the files
+- **livereload** the browser on-change of the files,
 
 run ...
 ```

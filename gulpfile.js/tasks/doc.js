@@ -3,7 +3,7 @@ const connect = require('gulp-connect');
 const docSpec = require('../config.json').options.doc;
 const serverConfig = require('../config.json').options.server;
 
-gulp.task('doc', ['build-doc'], function() {
+gulp.task('doc', ['watch-doc'], function() {
   connect.server({
     livereload: false,
     root: docSpec.dest,
