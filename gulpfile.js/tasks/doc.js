@@ -1,18 +1,12 @@
 const gulp = require('gulp');
-const child_exec = require('child_process').exec;
-const del = require('del');
-const runSequence = require('run-sequence');
+const connect = require('gulp-connect');
 const docSpec = require('../config.json').options.doc;
+const serverConfig = require('../config.json').options.server;
 
-function updateDoc(done) {
-  child_exec(`node ./node_modules/jsdoc/jsdoc.js ${docSpec.src} -c ./jsdoc.json -d ${docSpec.dest}`, undefined, done)
-}
-
-gulp.task('clean-doc', () =>
-  del(`${docSpec.dest}/*`)
-);
-
-gulp.task('update-doc', updateDoc);
-
-gulp.task('doc', ['clean-doc'], updateDoc);
-
+gulp.task('doc', ['build-doc'], function() {
+  connect.server({
+    livereload: false,
+    root: docSpec.dest,
+    port: serverConfig.basePort + 2
+  });
+});

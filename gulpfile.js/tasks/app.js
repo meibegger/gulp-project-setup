@@ -3,11 +3,10 @@ const connect = require('gulp-connect');
 const watch = require('gulp-watch');
 const serverConfig = require('../config.json').options.server;
 
-gulp.task('connect', ['watch'], function() {
+gulp.task('app', ['build'], function() {
   connect.server({
-    livereload: true,
+    livereload: false,
     root: serverConfig.root,
-    port: serverConfig.basePort + 1
+    port: serverConfig.basePort
   });
-  watch(`${serverConfig.root}/**/*`).pipe(connect.reload());
 });

@@ -11,7 +11,7 @@ Differences:
 - the css and js files have to be included in the html template (see the example in `src/views/index.html`)
 
 The files are compiled and transferred to the `dist` folder using gulp (https://gulpjs.com/). 
-The gulp setup is located in the `gulpfile.js` folder. All configuration can be done in `gulpfile.js.config.js`.
+The gulp setup is located in the `gulpfile.js` folder. All configuration can be done in `gulpfile.js/config.js`.
 
 ## Install
 Install gulp globally ...
@@ -23,39 +23,69 @@ $ npm install gulp -g
 $ npm install
 ```
 
-## Project Files
+## App
 The distribution files are generated in the `/dist` folder.
 
-### Start the server
-Run ...
+### View the App
+To 
+- **build** the app and 
+- start a **server**, 
+
+run ...
+```
+$ gulp app
+```
+Then open **`http://localhost:8000`** in your browser.
+
+### Watch the App
+To 
+- **build** the app,
+- **watch** the source files,  
+- start a **server**, and
+- **livereload** the browser on-change of the files
+
+run ...
 ```
 $ gulp connect
 ```
-... and open **`http://localhost:8000`** in your browser.
+Then open **`http://localhost:8001`** in your browser.
 
-The files are watched and the browser is updated automatically on-change of the files.
-
-### Build the project
-To only build the project without starting a watcher and server, run
+### Build the App
+To build the app without starting a watcher and server, run
 ```
 $ gulp build
 ``` 
 (This will also generate the JSDoc documentation)
 
-## Documentation
+## JSDoc
 The documentation is generated in the `/docs` folder.
 
-### Start the server
-There is a separate server for the documentation. To start it, run ...
-```
-$ gulp livedoc
-```
-... and open **`http://localhost:8001`** in your browser.
+### View the Docs
+To 
+- **build** the docs and 
+- start a **server**, 
 
-The files are watched and the browser is updated automatically on-change of the files.
-
-### Generate the documentation
-To only generate the JSDoc documentation without starting a watcher and server, run
+run ...
 ```
 $ gulp doc
+```
+Then open **`http://localhost:8002`** in your browser.
+
+### Watch the Docs
+To 
+- **build** the docs,
+- **watch** the js files,  
+- start a **server**, and
+- **livereload** the browser on-change of the files
+
+run ...
+```
+$ gulp live-doc
+```
+Then open **`http://localhost:8003`** in your browser.
+
+### Build the Docs
+To only generate the JSDoc documentation without starting a watcher and server, run
+```
+$ gulp build-doc
 ```

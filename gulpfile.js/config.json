@@ -2,8 +2,7 @@
   "options": {
     "server": {
       "root": "dist",
-      "livereload": true,
-      "port": 8000
+      "basePort": 8000
     },
     "clean": [
       "dist/**/*"
@@ -49,11 +48,7 @@
     },
     "doc": {
       "src": "src/assets/js",
-      "dest": "docs",
-      "server": {
-        "livereload": true,
-        "port": 8001
-      }
+      "dest": "docs"
     }
   },
   "build": {
@@ -65,7 +60,7 @@
       "buildES6",
       "images",
       "scss",
-      "doc"
+      "build-doc"
     ]
   },
   "watch": {

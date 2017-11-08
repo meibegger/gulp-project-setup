@@ -2,12 +2,13 @@ const gulp = require('gulp');
 const connect = require('gulp-connect');
 const watch = require('gulp-watch');
 const docSpec = require('../config.json').options.doc;
+const serverConfig = require('../config.json').options.server;
 
-gulp.task('livedoc', ['doc'], function() {
+gulp.task('live-doc', ['build-doc'], function() {
   connect.server({
-    livereload: docSpec.server.livereload,
+    livereload: true,
     root: docSpec.dest,
-    port: docSpec.server.port
+    port: serverConfig.basePort + 3
   });
   watch(`${docSpec.dest}/**/*`).pipe(connect.reload());
 
