@@ -34,6 +34,7 @@ function compile(watch) {
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest(babelSpecs.dest))
       .on('end', function(){ gutil.log('finished bundling ...'); });
   }
 
