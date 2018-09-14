@@ -1,16 +1,17 @@
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
-const watchConfig = require('../config.json').watch;
+const watchConfig = require('../config.js').main.watch;
 
-const sequence = watchConfig.prerequisites;
-sequence.push(watchConfig.watch.reduce((tasks, spec) => {
+const sequence = ['cleanup'];
+sequence.push(watchConfig.tasks.reduce((tasks, spec) => {
   tasks = tasks.concat(spec.tasks);
   return tasks;
-}, watchConfig.start));
+}, watchConfig.start || []));
+sequence.push('connect');
 
 gulp.task('watch', () => {
   runSequence.apply(null, sequence);
-  watchConfig.watch.forEach(spec =>
+  watchConfig.tasks.forEach(spec =>
     gulp.watch(spec.files, spec.tasks)
   )
 });

@@ -1,20 +1,18 @@
 # Gulp Project Setup
 
-The files in this repo are intended to give you a simpler, more flexible framework for the Project, than the webpack environment, used in the AK.
+The files in this repo are intended to give you a fast setup of a simple web-project using Gulp to transpile and pack your files to a `dist` folder.
 
-## Introduction
-The structure of the project source is the same as in the AK.
+## Features
+- Copy the HTML files
+- Transpile ES6 to ES5 with Babel and pack everything with Browserify
+- Transpile SCSS to CSS
+- Minify CSS and JS and genarate sourcemaps
+- Minify images
+- Genarate a JSDoc Documentation
+- Start a web-server with live-reload
 
-Differences:
-- all files in `src/views` are copied to the `dist` folder
-- images from `src/assets/img` are optimized and saved in `dist/img`
-- the css and js files have to be included in the html template (see the example in `src/views/index.html`)
-
-The files are compiled and transferred to the `dist` folder using gulp (https://gulpjs.com/). 
-The gulp setup is located in the `gulpfile.js` folder. All configuration can be done in `gulpfile.js/config.js`.
-
-## Install
-Install gulp globally ...
+## Getting started
+Install Gulp globally ...
 ```
 $ npm install gulp -g
 ```
@@ -23,72 +21,129 @@ $ npm install gulp -g
 $ npm install
 ```
 
-## App
-The distribution files are generated in the `/dist` folder.
+## Project Structure
+### Gulp tasks
+The gulp setup is located in the `/gulpfile.js` folder. 
 
-### View the App
-To 
-- **build** the app, 
-- **watch** the source files, and  
-- start a **server**, 
+All available tasks can be found in `gulpfile.js/tasks` and are configured in `gulpfile.js/config.js`. This should make it easy to extend and customize the compilation-process for a given project.
 
-run ...
+The following documentation refers to the default config. 
+
+### Source Files
+The source files of your project live in the `/src` folder.
+
 ```
-$ gulp app
+src
+|-- assets
+.   |-- img
+.   |-- js
+.   .   |-- index.js
+.   |-- scss
+.   .   |-- index.scss
+|-- views
+    |-- index.html
 ```
-Then open **`http://localhost:8000`** in your browser.
 
-(The files will be recompiled on change, but you need to reload the browser manually to see the changes)
-
-### Watch the App
-To 
-- **build** the app,
-- **watch** the source files,  
-- start a **server**, and
-- **livereload** the browser on-change of the files,
-
-run ...
+### Output
+#### App
+Your project is transpiled to the `/dist` folder
 ```
-$ gulp connect
+dist
+|-- css
+.   |-- index.css
+|-- img
+|-- js
+.   |-- index.js
+|-- index.html
 ```
-Then open **`http://localhost:8001`** in your browser.
 
-### Build the App
-To build the app without starting a watcher and server, run
+#### JSDoc
+The JSDoc documentation is generated in the `/docs` folder.
+gulp watch --doc --connect live
+
+gulp doc --connect live
+
+gulp build --connect
+
+## Transpile and pack
+
+### Watch the app
 ```
-$ gulp build
-``` 
-(This will also generate the JSDoc documentation)
-
-## JSDoc
-The documentation is generated in the `/docs` folder.
-
-### View the Docs
-To 
-- **build** the docs and 
-- start a **server**, 
-
-run ...
+$ gulp watch [--doc] [--connect [live]]
 ```
+Watch the app source files and generate the app. The JS and CSS are minified and sourcemaps are generated.
+
+Optionally generate the JSDoc and start a web-server (with optional live reload).
+
+#### Options
+**--doc**
+Add this option to also generate the JSDoc
+
+**--connect**
+Add this option to start a web-server for every required output (app and doc).
+Set the `connect` option to `live` to livereload the browser on change
+
+#### Examples
+```
+// Only generate the app
+$ gulp watch
+
+// Generate the app and the JSDoc
+$ gulp watch --doc
+
+// Generate the app and start a web-server
+$ gulp watch --connect
+
+// Generate the app and start a web-server with live-reload
+$ gulp watch --connect live
+
+// Generate the app and JSDoc and start a web-server for each
+$ gulp watch --doc --connect
+
+// Generate the app and JSDoc and start a web-server for each with live-reload
+$ gulp watch --doc --connect live
+```
+
+### Only watch the JSDocs
+```
+$ gulp doc [--connect [live]]
+```
+Watch the JS source files and generate the JSDoc. Optionally start a web-server (with optional live reload).
+
+#### Options
+**--connect**
+Add this option to start a web-server.
+Set the `connect` option to `live` to livereload the browser on change
+
+#### Examples
+```
+// Only generate the JSDoc
 $ gulp doc
-```
-Then open **`http://localhost:8002`** in your browser.
 
-### Watch the Docs
-To 
-- **build** the docs,
-- **watch** the js files,  
-- start a **server**, and
-- **livereload** the browser on-change of the files
+// Generate the JSDoc and start a web-server
+$ gulp doc --connect
 
-run ...
+// Generate the JSDoc and start a web-server with live-reload
+$ gulp watch --connect live
 ```
-$ gulp live-doc
-```
-Then open **`http://localhost:8003`** in your browser.
 
-### Build the Docs
-To only generate the JSDoc documentation without starting a watcher and server, run
+### Build the app for distribution
 ```
-$ gulp build-doc
+$ gulp build [--connect]
+```
+Generate the app with minified CSS and JS and without sourcemaps for performance reasons.
+
+Optionally start a web-server to view the generated files.
+ 
+#### Options
+**--connect**
+Add this option to start a web-server.
+
+#### Examples
+```
+// Build the app and JSDoc
+$ gulp build
+
+// Build the app and JSDoc and start a web-server
+$ gulp build --connect
 ```

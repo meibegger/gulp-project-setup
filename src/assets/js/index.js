@@ -3,4 +3,6 @@
  * @version v0
  * @author Mandana Eibegger <ak@schoener.at>
  */
-import './test';
+import Test from './test';
+new Test('World');
+

@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const copySpecs = require('../config.json').options.copy;
+const copySpecs = require('../config.js').tasks.copy;
 
 gulp.task('copy', () =>
   copySpecs.forEach(copySpec =>

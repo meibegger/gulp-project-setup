@@ -1,12 +1,7 @@
 const gulp = require('gulp');
-const connect = require('gulp-connect');
-const docSpec = require('../config.json').options.doc;
-const serverConfig = require('../config.json').options.server;
+const child_exec = require('child_process').exec;
+const docSpec = require('../config.js').tasks.doc;
 
-gulp.task('doc', ['watch-doc'], function() {
-  connect.server({
-    livereload: false,
-    root: docSpec.dest,
-    port: serverConfig.basePort + 2
-  });
+gulp.task('doc', function(done) {
+  child_exec(`node ./node_modules/jsdoc/jsdoc.js ${docSpec.src} -c ./jsdoc.json -d ${docSpec.dest}`, undefined, done);
 });
