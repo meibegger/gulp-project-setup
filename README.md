@@ -1,22 +1,22 @@
 # Gulp Project Setup
 
-The files in this repo are intended to give you a fast setup of a simple web-project using Gulp to transpile and pack your files to a `dist` folder.
+The files in this repo are intended to give you a fast setup of a simple web-project using Gulp to build your files to a `dist` folder.
 
 ## Features
 - Copy the HTML files
 - Transpile ES6 to ES5 with Babel and pack everything with Browserify
-- Transpile SCSS to CSS
+- Transpile SCSS to CSS  and Autoprefix
 - Minify CSS and JS and genarate sourcemaps
 - Minify images
 - Genarate a JSDoc Documentation
 - Start a web-server with live-reload
 
 ## Getting started
-Install Gulp globally ...
+Install Gulp globally (if you haven't done so yet) ...
 ```
 $ npm install gulp -g
 ```
-... and install the project setup
+... and install the project dependencies
 ```
 $ npm install
 ```
@@ -46,7 +46,7 @@ src
 
 ### Output
 #### App
-Your project is transpiled to the `/dist` folder
+Your project is built to the `/dist` folder
 ```
 dist
 |-- css
@@ -59,13 +59,8 @@ dist
 
 #### JSDoc
 The JSDoc documentation is generated in the `/docs` folder.
-gulp watch --doc --connect live
 
-gulp doc --connect live
-
-gulp build --connect
-
-## Transpile and pack
+## Build and serve
 
 ### Watch the app
 ```
