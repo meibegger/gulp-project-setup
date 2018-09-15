@@ -16,7 +16,10 @@ gulp.task('scripts', function () {
     debug: scriptSpec.generateSourcemaps,
   })
     .transform('babelify', {
-      global: true,
+      // uncomment the next line, if you also need to transform external packages (node modules)
+      // global: true,
+      // uncomment (and edit) the next line to limit the transformation of external packages (performance!)
+      // ignore: /\/node_modules\/(?!bootstrap\/)/, // ?! will match if the given suffix is absent
       presets: presets,
       comments: false,
     })
