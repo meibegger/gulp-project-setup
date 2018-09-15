@@ -2,7 +2,7 @@
  * Configuration of the Gulp tasks
  */
 
-const args = require('./utils/args.js');
+const settings = require('./utils/settings.js');
 
 /*
  * Settings used in the exported config
@@ -33,19 +33,19 @@ const basePort = 8000;
  * @type {Array}
  */
 const servers = [];
-if (args.startAppServer) {
+if (settings.startAppServer) {
   servers.push({
     root: serverRoot,
     basePort: basePort,
-    livereload: args.livereload,
+    livereload: settings.livereload,
     name: "WebApp Server",
   })
 }
-if (args.startJSDocServer) {
+if (settings.startJSDocServer) {
   servers.push({
     root: destDirs.docs,
     basePort: basePort + 2,
-    livereload: args.livereload,
+    livereload: settings.livereload,
     name: "JSDoc Server",
   })
 }
@@ -55,10 +55,10 @@ if (args.startJSDocServer) {
  * @type {Array}
  */
 const cleanup = [];
-if (args.compileApp) {
+if (settings.compileApp) {
   cleanup.push(destDir + "**/*");
 }
-if (args.compileJSDoc) {
+if (settings.compileJSDoc) {
   cleanup.push(destDirs.docs + "**/*");
 }
 
@@ -66,7 +66,7 @@ if (args.compileJSDoc) {
  * which files to watch and their associated tasks
  */
 const watchTasks = []
-if (args.watchApp) {
+if (settings.watchApp) {
   watchTasks.push(
     {
       files: [
@@ -90,10 +90,10 @@ if (args.watchApp) {
       files: [
         srcDirs.es6 + "**/*",
       ],
-      tasks: args.watchJSDoc ? ["scripts", "doc"] : ["scripts"],
+      tasks: settings.watchJSDoc ? ["scripts", "doc"] : ["scripts"],
     }
   );
-} else if (args.watchJSDoc) {
+} else if (settings.watchJSDoc) {
   watchTasks.push(
     {
       files: [
@@ -129,8 +129,8 @@ module.exports = {
       entry: "index.js",
       entryDir: srcDirs.es6,
       destDir: "dist/js/",
-      generateSourcemaps: args.generateSourcemaps,
-      minify: args.minify,
+      generateSourcemaps: settings.generateSourcemaps,
+      minify: settings.minify,
     },
     /**
      * image settings
@@ -163,8 +163,8 @@ module.exports = {
         "android >= 4.4",
         "bb >= 10",
       ],
-      generateSourcemaps: args.generateSourcemaps,
-      minify: args.minify,
+      generateSourcemaps: settings.generateSourcemaps,
+      minify: settings.minify,
     },
     /**
      * JSDoc settings
