@@ -128,7 +128,7 @@ module.exports = {
     scripts: {
       entry: "index.js",
       entryDir: srcDirs.es6,
-      destDir: "dist/js/",
+      destDir: destDirs.es6,
       generateSourcemaps: settings.generateSourcemaps,
       minify: settings.minify,
     },
