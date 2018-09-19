@@ -16,5 +16,5 @@ module.exports.watchJSDoc = watchJSDoc;
 module.exports.startAppServer = argv.connect && compileApp;
 module.exports.startJSDocServer = argv.connect && compileJSDoc;
 module.exports.livereload = livereload;
-module.exports.minify = true;
+module.exports.minify = mainTask === 'build';
 module.exports.generateSourcemaps = generateSourcemaps;
