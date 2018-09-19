@@ -12,7 +12,7 @@ gulp.task('scss', function () {
       "includePaths": [
         "./node_modules"
       ],
-      outputStyle: scssSpec.minify ? 'compressed' : 'nested',
+      outputStyle: scssSpec.minify ? 'compressed' : 'expanded',
     }).on('error', scss.logError))
     .pipe(prefix(scssSpec.browsers))
     .pipe(gulpif(scssSpec.generateSourcemaps, sourcemaps.write('./')))
