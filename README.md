@@ -11,16 +11,6 @@ The files in this repo are intended to give you a fast setup of a simple web-pro
 - Genarate a JSDoc Documentation
 - Start a web-server with live-reload
 
-## Getting started
-Install Gulp globally (if you haven't done so yet) ...
-```
-$ npm install gulp -g
-```
-... and install the project dependencies
-```
-$ npm install
-```
-
 ## Project Structure
 ### Gulp tasks
 The gulp setup is located in the `/gulpfile.js` folder. 
@@ -59,6 +49,16 @@ dist
 
 #### JSDoc
 The JSDoc documentation is generated in the `/docs` folder.
+
+## Getting started
+Install Gulp globally (if you haven't done so yet) ...
+```
+$ npm install gulp -g
+```
+... and install the project dependencies
+```
+$ npm install
+```
 
 ## Build and serve
 
