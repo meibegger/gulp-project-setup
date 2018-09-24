@@ -1,9 +1,9 @@
 {
-  "name": "gulp-project",
-  "description": "My Gulp Project",
+  "name": "gulp-project-setup",
+  "description": "Setup for a simple web project using Gulp ",
   "private": true,
   "version": "0.0.0",
-  "author": "Super Developer <my@email.com>",
+  "author": "Mandana Eibegger",
   "devDependencies": {
     "@babel/core": "^7.0.1",
     "@babel/preset-env": "^7.0.0",
