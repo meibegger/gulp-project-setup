@@ -64,62 +64,55 @@ $ npm install
 
 ### Watch the app
 ```
-$ gulp watch [--doc] [--connect [live]]
+$ gulp watch [--doc] [--static]
 ```
-Watch the app source files and generate the app. The JS and CSS are minified and sourcemaps are generated.
+Watch the app source files and generate the app. The JS and CSS are minified and sourcemaps are generated. 
+Additionally a web-server with live-reload is started. 
 
-Optionally generate the JSDoc and start a web-server (with optional live reload).
+Optionally 
+- generate the JSDoc (a web-server for the docs is also started).
+- prevent live-reload
 
 #### Options
 **--doc**
 Add this option to also generate the JSDoc
 
-**--connect**
-Add this option to start a web-server for every required output (app and doc).
-Set the `connect` option to `live` to livereload the browser on change
+**--static**
+Add this option to prevent live-reload
 
 #### Examples
 ```
-// Only generate the app
+// Live-generate the app and start a web-server with live-reload
 $ gulp watch
 
-// Generate the app and the JSDoc
+// Live-generate the app and JSDoc and start a web-server for each with live-reload
 $ gulp watch --doc
 
-// Generate the app and start a web-server
-$ gulp watch --connect
+// Live-generate the app and start a web-server (without live-reload)
+$ gulp watch --static
 
-// Generate the app and start a web-server with live-reload
-$ gulp watch --connect live
-
-// Generate the app and JSDoc and start a web-server for each
-$ gulp watch --doc --connect
-
-// Generate the app and JSDoc and start a web-server for each with live-reload
-$ gulp watch --doc --connect live
+// Live-generate the app and JSDoc and start a web-server for each (without live-reload)
+$ gulp watch --doc --static
 ```
 
 ### Only watch the JSDocs
 ```
-$ gulp doc [--connect [live]]
+$ gulp doc [--static]
 ```
-Watch the JS source files and generate the JSDoc. Optionally start a web-server (with optional live reload).
+Watch the JS source files and generate the JSDoc. 
+Additionally a web-server with live-reload is started. 
 
 #### Options
-**--connect**
-Add this option to start a web-server.
-Set the `connect` option to `live` to livereload the browser on change
+**--static**
+Add this option to prevent live-reload
 
 #### Examples
 ```
-// Only generate the JSDoc
+// Live-generate the JSDoc and start a web-server with live-reload
 $ gulp doc
 
-// Generate the JSDoc and start a web-server
-$ gulp doc --connect
-
-// Generate the JSDoc and start a web-server with live-reload
-$ gulp watch --connect live
+// Live-generate the JSDoc and start a web-server (without live-reload)
+$ gulp doc --static
 ```
 
 ### Build the app for distribution
