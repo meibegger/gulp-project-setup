@@ -126,8 +126,10 @@ module.exports = {
      * ES6 settings
      */
     scripts: {
-      entry: "index.js",
-      entryDir: srcDirs.es6,
+      srcDir: srcDirs.es6,
+      entries: {
+        'index.js': 'index',
+      },
       destDir: destDirs.es6,
       generateSourcemaps: settings.generateSourcemaps,
       minify: settings.minify,
