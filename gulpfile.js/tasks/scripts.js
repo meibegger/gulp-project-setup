@@ -26,6 +26,10 @@ gulp.task('scripts', function () {
         // ignore: /\/node_modules\/(?!bootstrap\/)/, // ?! will match if the given suffix is absent
         presets: presets,
         comments: false,
+        plugins: [
+          '@babel/plugin-transform-runtime',
+          '@babel/plugin-transform-async-to-generator',
+        ],
       })
       .bundle()
       .on('error', function(err) { console.error('JS ERROR', err); this.emit('end'); })
