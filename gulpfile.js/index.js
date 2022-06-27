@@ -1,4 +1,6 @@
-const requireDir = require('require-dir');
+'use strict';
 
-// Register all tasks in gulpfile.js/tasks (including subfolders)
-requireDir('./tasks', { recurse: true });
+const { series } = require('gulp');
+const { scssTask } = require('./tasks/scssTask.js');
+
+exports.default = series(scssTask);
